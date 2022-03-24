@@ -1,8 +1,10 @@
-import Expenses from "./components/Expenses/Expenses"
+import React, { useState } from "react";
+import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 import "./components/Expenses/Expenses.css";
 
 const App = () => {
+    // const [expenses, setExpenses] = useState();
     const expenses = [
         {
             id: 'e1',
@@ -30,9 +32,14 @@ const App = () => {
         },
     ];
 
+    const addExpenseHandler = (newExpense) => {
+        expenses.push(newExpense);
+        console.log(expenses);
+    };
+
     return (
         <div>
-             <NewExpense></NewExpense>
+            <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
             <Expenses items={expenses}></Expenses>
         </div>
     );
